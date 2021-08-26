@@ -1,0 +1,15 @@
+<%- include('includes/head.ejs') %>
+<%- include('includes/nav.ejs') %>
+
+<main>
+  <h1>Products</h1>
+  <p>List of products</p>
+  <ul>
+    <% for (prod of prods ) {%>
+    <li>
+      <p><%= prod.title %></p>
+    </li>
+    <% } %>
+  </ul>
+</main>
+<%- include('includes/end.ejs') %>

@@ -1,0 +1,10 @@
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.linkActive {
+  text-decoration: none;
+  color: white;
+  background-color: blue;
+}
