@@ -9,8 +9,10 @@ app.set('view engine','ejs');
 // set template path
 app.set('views', 'views')
 
-const adminData = require('./routes/admin')
+const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
+
+const pageNotFoundController = require('./controller/404')
 
 // app.use(bodyParser.urlencoded({extended:false}))
 // express built in parser
@@ -19,12 +21,9 @@ app.use(express.urlencoded({extended:true}))
 // call static files
 app.use(express.static(path.join(rootDir,'Public')))
 
-app.use('/admin', adminData.routes)
+app.use('/admin', adminRoutes)
 app.use(shopRoutes)
 
-app.use((req, res, next)=>{
-   // res.status(404).sendFile(path.join(__dirname, 'views', '404page.html'))
-   res.status(404).render('404page', {docTitle:'404 Not found'})
-})
+app.use(pageNotFoundController.get404)
 
 app.listen(3000)
